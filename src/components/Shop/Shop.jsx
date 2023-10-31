@@ -12,10 +12,12 @@ const Shop = () => {
     const itemsPerPage = 9;
     const numberOfPages = Math.ceil(count / itemsPerPage);
 
-    const pages = []
-    for(let i = 0; i < numberOfPages; i++){
-        pages.push(i)
-    }
+    // const pages = []
+    // for(let i = 0; i < numberOfPages; i++){
+    //     pages.push(i)
+    // }
+
+    const pages = [ ...Array(numberOfPages).keys()]
 
     useEffect(() => {
         fetch('http://localhost:5000/products')
@@ -89,6 +91,11 @@ const Shop = () => {
                         <button className='btn-proceed'>Review Order</button>
                     </Link>
                 </Cart>
+            </div>
+            <div className='pagination'>
+                {
+                    pages.map( page => <button key={page}>{page}</button>)
+                }
             </div>
         </div>
     );
