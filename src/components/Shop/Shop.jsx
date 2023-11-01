@@ -8,11 +8,13 @@ import { Link, useLoaderData } from 'react-router-dom';
 const Shop = () => {
     const [products, setProducts] = useState([]);
     // const [cart, setCart] = useState([])
-    
-    const { count } = useLoaderData();
+    const cart = useLoaderData();
     const [itemsPerPage, setItemsPerPage] = useState(9);
     const [currentPage, setCurrentPage] = useState(0);
+    const count = 76;
     const numberOfPages = Math.ceil(count / itemsPerPage);
+    // const { count } = useLoaderData();
+    
 
     // const pages = []
     // for(let i = 0; i < numberOfPages; i++){
