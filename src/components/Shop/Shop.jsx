@@ -115,7 +115,7 @@ const Shop = () => {
                 <p>Current Page : {currentPage}</p>
                 <button onClick={handlePrevPage}>Prev</button>
                 {
-                    pages.map( page => <button className={currentPage === page && 'selected'}
+                    pages.map( page => <button className={currentPage === page ? 'selected' : undefined }
                         onClick={() => setCurrentPage(page)}
                         key={page}>{page}</button>)
                 }
