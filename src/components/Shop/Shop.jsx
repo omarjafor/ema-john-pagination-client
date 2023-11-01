@@ -7,14 +7,19 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const Shop = () => {
     const [products, setProducts] = useState([]);
-    // const [cart, setCart] = useState([])
-    const cart = useLoaderData();
+    const cartProduct = useLoaderData();
+    const [cart, setCart] = useState(cartProduct)
+
     const [itemsPerPage, setItemsPerPage] = useState(9);
     const [currentPage, setCurrentPage] = useState(0);
-    const count = 76;
+    const [count, setCount] = useState(0);
     const numberOfPages = Math.ceil(count / itemsPerPage);
-    // const { count } = useLoaderData();
     
+    useEffect( () => {
+        fetch('http://localhost:5000/productCount')
+        .then(res => res.json())
+        .then(data => setCount(data.count))
+    } , [])
 
     // const pages = []
     // for(let i = 0; i < numberOfPages; i++){
