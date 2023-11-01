@@ -21,7 +21,7 @@ const Shop = () => {
     const pages = [ ...Array(numberOfPages).keys()]
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch(`http://localhost:5000/products?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, []);
@@ -120,7 +120,7 @@ const Shop = () => {
                         key={page}>{page}</button>)
                 }
                 <button onClick={handleNextPage}>Next</button>
-                <select value={itemsPerPage} onChange={handleItemsPerPage} name="" id="">
+                <select value={itemsPerPage} onChange={handleItemsPerPage} name="" id="" className=''>
                     <option value="9">9</option>
                     <option value="15">15</option>
                     <option value="20">20</option>
