@@ -27,6 +27,11 @@ const Shop = () => {
     // }
 
     const pages = [ ...Array(numberOfPages).keys()]
+    const newPages = [];
+    for(let i=0; i<pages.length; i++){
+        newPages.push(pages[i]+1)
+    }
+    console.log(newPages);
 
     useEffect(() => {
         fetch(`http://localhost:5000/products?page=${currentPage}&size=${itemsPerPage}`)
@@ -123,8 +128,8 @@ const Shop = () => {
                 <p>Current Page : {currentPage}</p>
                 <button onClick={handlePrevPage}>Prev</button>
                 {
-                    pages.map( page => <button className={currentPage === page ? 'selected' : undefined }
-                        onClick={() => setCurrentPage(page)}
+                    newPages.map( page => <button className={currentPage === page-1 ? 'selected' : undefined }
+                        onClick={() => setCurrentPage(page - 1)}
                         key={page}>{page}</button>)
                 }
                 <button onClick={handleNextPage}>Next</button>
